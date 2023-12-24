@@ -1,12 +1,10 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
-import { FaHome, FaTasks } from "react-icons/fa";
-
 import { IoIosAddCircle } from "react-icons/io";
+import { MdLogout } from "react-icons/md";
 import useAuth from "../hooks/useAuth";
-// import { Helmet } from "react-helmet-async";
 
 const Dashboard = () => {
-  const { user } = useAuth();
+  const { user, logOut } = useAuth();
   return (
     <div>
       {/* <Helmet>
@@ -16,9 +14,10 @@ const Dashboard = () => {
         {/* dashboard side bar  */}
         <div className="w-64 min-h-screen pt-6 bg-slate-400  ">
           <Link to="/">
-            <div className="block cursor-pointer p-4 font-bold">
+            <div className="cursor-pointer ml-16 mb-4 rounded-full">
               <img
-                src="https://i.ibb.co/1q5Lfyz/demo-navbar-logo.png"
+                className="w-[80px] h-[80px] rounded-full"
+                src={user.photoURL}
                 alt="Micronet"
               />
             </div>
@@ -32,10 +31,11 @@ const Dashboard = () => {
             </li>
 
             <div className="divider"></div>
+
             <li className="text-lg">
-              <NavLink to="/">
-                <FaHome></FaHome>
-                Home
+              <NavLink to="/" onClick={logOut}>
+                <MdLogout></MdLogout>
+                LogOut
               </NavLink>
             </li>
           </ul>

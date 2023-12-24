@@ -8,9 +8,18 @@ const ListTasks = ({ tasks, setTasks }) => {
   const [completed, setCopleted] = useState([]);
 
   useEffect(() => {
-    const fTodos = tasks.filter((task) => task.status === "todo");
-    const fOngoing = tasks.filter((task) => task.status === "ongoing");
-    const fCompleted = tasks.filter((task) => task.status === "completed");
+    const fTodos =
+      tasks &&
+      tasks.length > 0 &&
+      tasks.filter((task) => task.status === "todo");
+    const fOngoing =
+      tasks &&
+      tasks.length > 0 &&
+      tasks.filter((task) => task.status === "ongoing");
+    const fCompleted =
+      tasks &&
+      tasks.length > 0 &&
+      tasks.filter((task) => task.status === "completed");
 
     setTodos(fTodos);
     setOngoing(fOngoing);
